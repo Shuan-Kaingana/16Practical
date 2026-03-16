@@ -33,13 +33,12 @@ public class tryHeapSort {
         String[] wordArray = Words.toArray(new String[0]);
         System.out.println("Loaded " + wordArray.length + " words from ulysses.txt\n");
 
-        System.out.println("=== Small test (20 words) ===");
-        String[] sample = {
-            "whale", "apple", "mango", "zebra", "cat",
-            "dog", "fig", "elderberry", "banana", "kiwi",
-            "nectarine", "orange", "pear", "quince", "raspberry",
-            "strawberry", "tomato", "ugli", "vanilla", "watermelon"
-        };
+        List<String> samplelist = new ArrayList<>();
+        for(int i = 50;i < 70; i++){
+            samplelist.add(wordArray[i]);
+        }
+        String[] sample = samplelist.toArray(new String[0]);
+
         MinHeap testHeap = new MinHeap(sample.length);
         testHeap.buildUp(sample);
         System.out.println("Bottom-up sorted: " + Arrays.toString(testHeap.sort()));
@@ -93,7 +92,7 @@ public class tryHeapSort {
         System.out.println("First 5 sorted: " + Arrays.toString(Arrays.copyOfRange(sortedBottomUp, 0, 5)));
         System.out.println("Last  5 sorted: " + Arrays.toString(Arrays.copyOfRange(sortedBottomUp,
                             sortedBottomUp.length - 5, sortedBottomUp.length)));
-                            
+
         System.out.println("\n=== Timing: Top-down build (O(n log n)) ===");
         runTime = 0; runTime2 = 0;
         String[] sortedTopDown = null;
